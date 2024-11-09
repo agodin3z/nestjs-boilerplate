@@ -1,0 +1,16 @@
+services:
+  api_sandbox:
+    container_name: api_sandbox
+    build:
+      context: .
+      target: development
+    command: npm run start:dev
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 80:3000
+# # Uncomment or passing as environment variables
+#    env_file:
+#      - .env
+#      - .docker.env

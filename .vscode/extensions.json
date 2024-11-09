@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "aaron-bond.better-comments",
+    "editorconfig.editorconfig",
+    "usernamehw.errorlens",
+    "wayou.vscode-todo-highlight",
+    "philsinatra.nested-comments",
+    "rangav.vscode-thunder-client",
+    "biomejs.biome",
+    "esbenp.prettier-vscode"
+  ]
+}

@@ -1,0 +1,30 @@
+# Versioning and metadata
+.git
+.gitignore
+.dockerignore
+
+# Build dependencies
+dist
+node_modules
+coverage
+npm-debug.log
+
+# Environment (contains sensitive data)
+.env
+
+# Files not required for production
+.editorconfig
+Dockerfile
+README.md
+.env.example
+CONTRIBUTING.md
+.vscode
+.github
+.husky
+docker*
+Makefile
+temp
+.allowedApiKeys.js.example
+.eslint*
+.prettier*
+commitlint.config.js
