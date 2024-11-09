@@ -1,15 +1,17 @@
-import { AppService } from '@domain/services/app.service';
+import { HelloQuery } from '@application/queries/hello.query';
 import { Controller, Get } from '@nestjs/common';
+import { QueryBus } from '@nestjs/cqrs';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('Status')
+@ApiTags('Index')
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly _queryBus: QueryBus) {}
 
   @Get()
   @ApiOperation({ summary: 'Say hello' })
-  getHello(): string {
-    return this.appService.getHello();
+  getHello(): Promise<string> {
+    const query = new HelloQuery();
+    return this._queryBus.execute(query);
   }
 }
