@@ -1,8 +1,11 @@
-import { Logger } from '@nestjs/common';
+import { HttpStatus, Logger } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
+import { plainToInstance } from 'class-transformer';
 
-import { HelloQuery } from '../hello.query';
 import { AppService } from '@domain/services/app.service';
+import { handleError } from '@domain/utils/error';
+import { InnerResponseDto, ResponseDto } from '@interface/dtos/response.dto';
+import { HelloQuery } from '../hello.query';
 
 @QueryHandler(HelloQuery)
 export class HelloHandler implements IQueryHandler<HelloQuery> {
@@ -11,12 +14,22 @@ export class HelloHandler implements IQueryHandler<HelloQuery> {
     this.logger = new Logger(HelloHandler.name);
   }
 
-  async execute(): Promise<string> {
+  async execute(): Promise<InnerResponseDto> {
     try {
-      return this.service.getHello();
+      const message = this.service.getHello();
+      return {
+        status: HttpStatus.OK,
+        result: plainToInstance(
+          ResponseDto,
+          {
+            success: true,
+            message,
+          },
+          { excludeExtraneousValues: true },
+        ),
+      };
     } catch (error) {
-      this.logger.error(error);
-      throw error;
+      return handleError(error, this.logger);
     }
   }
 }
