@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER } from '@nestjs/core';
 import { CqrsModule } from '@nestjs/cqrs';
 
+import { HelloHandler } from './application/queries/handlers/hello.handler';
 import { AppService } from './domain/services/app.service';
 import { configuration, validationSchema } from './infraestructure/config';
 import { HealthModule } from './infraestructure/health/health.module';
@@ -16,7 +17,7 @@ const controllers = [AppController];
 
 const commands = [];
 const events = [];
-const queries = [];
+const queries = [HelloHandler];
 
 @Module({
   imports: [
