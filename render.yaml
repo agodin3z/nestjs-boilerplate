@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: api-boilerplate
+    runtime: docker
+    repo: https://github.com/agodin3z/nestjs-cqrs-boilerplate
+    branch: main
+    plan: free
+    autoDeploy: false
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ENABLE_DOCUMENTATION
+        value: 'true'
