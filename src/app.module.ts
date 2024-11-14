@@ -9,7 +9,7 @@ import { configuration, validationSchema } from './infraestructure/config';
 import { HealthModule } from './infraestructure/health/health.module';
 import { AppController } from './interface/controllers/app.controller';
 import { HttpExceptionFilter } from './interface/exceptions/http-exception.filter';
-import { DomainFilterMiddleware } from './interface/middlewares/domain-filter.middleware';
+// import { DomainFilterMiddleware } from './interface/middlewares/domain-filter.middleware';
 import { HttpLogger } from './interface/middlewares/http-logger.middleware';
 
 const providers = [AppService, { provide: APP_FILTER, useClass: HttpExceptionFilter }];
@@ -39,6 +39,11 @@ const queries = [HelloHandler];
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(HttpLogger, DomainFilterMiddleware).forRoutes('*');
+    consumer
+      .apply(
+        HttpLogger,
+        // DomainFilterMiddleware,
+      )
+      .forRoutes('*');
   }
 }
