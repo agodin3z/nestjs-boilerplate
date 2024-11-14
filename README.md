@@ -132,3 +132,7 @@ Check out a few resources that may come in handy when working with NestJS:
 - Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
 - Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
 - Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
+
+## One-click deploy
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/agodin3z/nestjs-cqrs-boilerplate)
